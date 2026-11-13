@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #F4F8FD;
+  --primary-blue: #A9CFF5;
+  --light-blue: #DCEEFF;
+  --accent-blue: #75AFE5;
+  --deep-blue: #315778;
+  --white: #FFFFFF;
+  --text-main: #263D55;
+  --text-muted: #8296AA;
+  --border-color: #E4EDF6;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F8FD;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4DCF3;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #75AFE5;
+}
+
+/* Blueprint Grid Layer */
+.blueprint-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(169, 207, 245, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 207, 245, 0.22) 1px, transparent 1px);
+}
+
+.blueprint-grid-dense {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(169, 207, 245, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 207, 245, 0.15) 1px, transparent 1px);
+}
+
+/* Soft Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(228, 237, 246, 0.8);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #E4EDF6;
+  box-shadow: 0 4px 20px -2px rgba(49, 87, 120, 0.05), 0 2px 6px -1px rgba(49, 87, 120, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: #A9CFF5;
+  box-shadow: 0 12px 30px -4px rgba(49, 87, 120, 0.1), 0 4px 12px -2px rgba(49, 87, 120, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Technical CAD Crosshair & Coordinate Marker */
+.cad-mark {
+  position: relative;
+}
+.cad-mark::before, .cad-mark::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}

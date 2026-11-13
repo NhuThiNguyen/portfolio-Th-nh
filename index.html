@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cao Đức Tiến Thành — Premium Personal Portfolio & CMS</title>
+  <meta name="description" content="Portfolio cá nhân của Cao Đức Tiến Thành. Tư duy kỹ thuật, kinh nghiệm AutoCAD, công cụ tự phát triển, TOEIC 600, Bách Khoa TP.HCM & Nguyễn Hữu Huân." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23315778'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='42' fill='%23A9CFF5'>TT</text></svg>" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- JSZip for Bulk Downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-pastel-bg text-pastel-text antialiased">
+
+  <!-- Blueprint Background Grid & CAD Accents -->
+  <div class="blueprint-bg-layer" aria-hidden="true">
+    <div class="blueprint-grid"></div>
+    <div class="radial-glow glow-1"></div>
+    <div class="radial-glow glow-2"></div>
+    <div class="radial-glow glow-3"></div>
+    <div class="cad-coords top-left font-mono">+ LOC: 10.8494° N, 106.7537° E [THU DUC]</div>
+    <div class="cad-coords top-right font-mono hidden-mobile">CAD-REF: CDTT-2002-12-10 // V2.4</div>
+    <svg class="cad-drafting-circle circle-1" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="90" strokeWidth="1" strokeDasharray="4 4" />
+      <circle cx="100" cy="100" r="60" strokeWidth="0.8" />
+      <line x1="100" y1="0" x2="100" y2="200" strokeWidth="0.5" />
+      <line x1="0" y1="100" x2="200" y2="100" strokeWidth="0.5" />
+    </svg>
+  </div>
+
+  <!-- Mobile Top Bar -->
+  <header class="mobile-topbar lg-hidden">
+    <a href="#hero" class="brand-badge">
+      <div class="logo-box">TT</div>
+      <span class="brand-name">Cao Đức Tiến Thành</span>
+    </a>
+    <div class="mobile-actions">
+      <button id="cmsDirectBtnMobile" class="btn-cms-badge" title="Mở CMS Quản trị">
+        <i data-lucide="shield"></i> <span>CMS</span>
+      </button>
+      <button id="mobileMenuBtn" class="btn-icon" aria-label="Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div id="mobileBackdrop" class="drawer-backdrop hidden"></div>
+
+  <!-- Fixed Left Sidebar on Desktop / Drawer on Mobile -->
+  <aside id="mainSidebar" class="sidebar-container">
+    <div class="sidebar-header">
+      <a href="#hero" class="brand-card">
+        <div class="brand-avatar-box">
+          <div class="avatar-box">TT</div>
+          <span class="active-dot"></span>
+        </div>
+        <div>
+          <h1 class="brand-title">Cao Đức Tiến Thành</h1>
+          <p class="brand-sub font-mono">PORTFOLIO & TOOLS</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Navigation Menu (11 Sections) -->
+    <nav class="sidebar-nav" id="sidebarNav">
+      <a href="#hero" class="nav-link active" data-section="hero"><i data-lucide="home"></i><span>Home</span></a>
+      <a href="#about" class="nav-link" data-section="about"><i data-lucide="user"></i><span>About Me</span></a>
+      <a href="#education" class="nav-link" data-section="education"><i data-lucide="graduation-cap"></i><span>Education</span></a>
+      <a href="#skills" class="nav-link" data-section="skills"><i data-lucide="wrench"></i><span>Skills</span></a>
+      <a href="#tools" class="nav-link" data-section="tools"><i data-lucide="cpu"></i><span>My Tools</span></a>
+      <a href="#certificates" class="nav-link" data-section="certificates"><i data-lucide="award"></i><span>Certificates</span></a>
+      <a href="#interests" class="nav-link" data-section="interests"><i data-lucide="heart"></i><span>Interests</span></a>
+      <a href="#journal" class="nav-link" data-section="journal"><i data-lucide="book-open"></i><span>My Journal</span></a>
+      <a href="#gallery" class="nav-link" data-section="gallery"><i data-lucide="image"></i><span>Gallery</span></a>
+      <a href="#memories" class="nav-link" data-section="memories"><i data-lucide="folder-heart"></i><span>Memories</span></a>
+      <a href="#contact" class="nav-link" data-section="contact"><i data-lucide="mail"></i><span>Contact</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-badges font-mono">
+        <span>TOEIC 600 • CAD</span>
+        <span class="highlight-tag">BK-HCMUT</span>
+      </div>
+      <button id="openCmsBtn" class="btn-cms-toggle">
+        <i data-lucide="shield"></i>
+        <span>Quản Trị Viên (CMS)</span>
+        <i data-lucide="external-link" class="sub-icon"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Website Content Area -->
+  <main class="main-content">
+    
+    <!-- A. HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="section-container hero-grid">
+        <div class="hero-text-col">
+          <div class="badge-row">
+            <span class="tech-badge blue-badge"><span class="dot-pulse"></span> Engineering Mindset</span>
+            <span class="tech-badge green-badge"><i data-lucide="check-circle"></i> TOEIC 600 Certified</span>
+            <span class="tech-badge light-badge"><i data-lucide="cpu"></i> AutoCAD & Tools</span>
+          </div>
+
+          <div class="hero-titles">
+            <div class="section-tag font-mono"><i data-lucide="terminal"></i> PERSONAL PORTFOLIO & TECHNICAL SHOWCASE</div>
+            <h1 class="hero-name" id="heroName">Cao Đức Tiến Thành</h1>
+            <p class="hero-headline" id="heroHeadline">"Engineering Mindset. Technical Skills. Continuous Growth."</p>
+          </div>
+
+          <p class="hero-bio" id="heroBio">
+            I am Cao Duc Tien Thanh, a technology-oriented individual with experience in AutoCAD and developing practical tools to support work processes. I enjoy exploring new technologies, solving problems, and continuously improving my skills.
+          </p>
+
+          <div class="hero-tags-row">
+            <div class="info-pill"><i data-lucide="map-pin"></i> <span id="heroLocation">Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</span></div>
+            <div class="info-pill"><i data-lucide="award"></i> <span>ĐHBK – ĐHQG TP.HCM & THPT Nguyễn Hữu Huân</span></div>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#about" class="btn btn-primary"><i data-lucide="arrow-down"></i> Khám phá Portfolio</a>
+            <a href="#contact" class="btn btn-secondary"><i data-lucide="mail"></i> Liên hệ với tôi</a>
+          </div>
+        </div>
+
+        <div class="hero-image-col">
+          <div class="portrait-card glass-card">
+            <div class="cad-corner tl"></div>
+            <div class="cad-corner br"></div>
+            <div class="portrait-wrapper">
+              <img id="heroPortraitImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Cao Đức Tiến Thành" class="portrait-img" />
+              <div class="portrait-overlay-badge">
+                <div>
+                  <p class="p-name">Cao Đức Tiến Thành</p>
+                  <p class="p-dob font-mono" id="heroPortraitDob">DOB: 10/12/2002</p>
+                </div>
+                <span class="verified-tag font-mono">VERIFIED</span>
+              </div>
+            </div>
+            <div class="portrait-specs font-mono">
+              <div class="spec-box"><span class="spec-label">TIẾNG ANH</span><span class="spec-val">TOEIC 600</span></div>
+              <div class="spec-box"><span class="spec-label">CHUYÊN MÔN</span><span class="spec-val">AutoCAD & Tools</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B. ABOUT ME SECTION -->
+    <section id="about" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">01 // BACKGROUND & IDENTITY</div>
+        <h2 class="section-title">Về Tôi — Cao Đức Tiến Thành</h2>
+        <p class="section-subtitle">Tư duy kỹ thuật, định hướng giải pháp thực tế và tinh thần tự học không ngừng.</p>
+
+        <div class="about-grid">
+          <div class="glass-card about-profile-card">
+            <div class="card-header-icon"><i data-lucide="user"></i> <h3>Thông tin xác thực</h3></div>
+            <div class="profile-details-list">
+              <div class="detail-item">
+                <i data-lucide="user"></i>
+                <div><span class="d-label">Họ và tên</span><strong class="d-val" id="aboutName">Cao Đức Tiến Thành</strong></div>
+              </div>
+              <div class="detail-item">
+                <i data-lucide="calendar"></i>
+                <div><span class="d-label">Ngày sinh</span><strong class="d-val" id="aboutDob">10/12/2002</strong></div>
+              </div>
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                <div><span class="d-label">Nơi cư trú</span><strong class="d-val" id="aboutLoc">Thủ Đức, TP. Hồ Chí Minh</strong></div>
+              </div>
+              <div class="detail-item">
+                <i data-lucide="graduation-cap"></i>
+                <div>
+                  <span class="d-label">Nền tảng học vấn</span>
+                  <strong class="d-val">ĐH Bách khoa ĐHQG TP.HCM</strong>
+                  <span class="d-sub">THPT chuyên Nguyễn Hữu Huân</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card about-bio-card">
+            <div class="bio-intro">
+              <div class="bio-tag font-mono"><i data-lucide="compass"></i> ENGINEERING MINDSET & APPROACH</div>
+              <p class="bio-highlight" id="aboutBioHighlight">
+                Tôi là một người yêu thích công nghệ với tư duy kỹ thuật rõ ràng. Trong quá trình học tập và làm việc, tôi đặc biệt chú trọng vào tính chính xác, khả năng làm việc với AutoCAD và chủ động tự xây dựng các công cụ nhỏ nhằm hỗ trợ công việc, giúp tối ưu hóa thời gian và quy trình xử lý.
+              </p>
+              <p class="bio-sub">
+                Tôi luôn duy trì sự tò mò đối với những công nghệ mới, thích tự tay giải quyết những bài toán phát sinh từ thực tế và không ngừng trau dồi cả về mặt chuyên môn kỹ thuật lẫn tư duy phân tích.
+              </p>
+            </div>
+            <div class="strengths-grid">
+              <div class="strength-pill">
+                <div class="s-title"><i data-lucide="lightbulb"></i> Tự học & Nghiên cứu</div>
+                <p class="s-desc">Khả năng tự tìm tòi tài liệu, làm chủ công cụ và thích ứng công nghệ mới.</p>
+              </div>
+              <div class="strength-pill">
+                <div class="s-title"><i data-lucide="target"></i> Giải pháp Thực tế</div>
+                <p class="s-desc">Tập trung tạo ra công cụ giải quyết đúng điểm nghẽn trong công việc.</p>
+              </div>
+              <div class="strength-pill">
+                <div class="s-title"><i data-lucide="check-circle-2"></i> Trách nhiệm cao</div>
+                <p class="s-desc">Độc lập, tỉ mỉ và kiên trì trong từng sản phẩm và bản vẽ kỹ thuật.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C. EDUCATION SECTION -->
+    <section id="education" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">02 // ACADEMIC TIMELINE</div>
+        <h2 class="section-title">Học Vấn & Quá Trình Đào Tạo</h2>
+        <p class="section-subtitle">Lộ trình học tập nền tảng tại các ngôi trường hàng đầu, tôi luyện tư duy logic và phong cách làm việc kỹ thuật chuẩn xác.</p>
+
+        <div class="timeline-container" id="educationTimeline">
+          <!-- Dynamic Education Items injected via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- D. TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">03 // COMPETENCY & EXPERTISE</div>
+        <h2 class="section-title">Kỹ Năng & Năng Lực Kỹ Thuật</h2>
+        <p class="section-subtitle">Tập trung vào tính ứng dụng thực tế: thành thạo AutoCAD, tự xây dựng giải pháp hỗ trợ công việc và năng lực ngoại ngữ chuẩn mực.</p>
+
+        <!-- Primary Skill: AutoCAD Featured Showcase -->
+        <div class="glass-card skill-featured-card" id="autocadSkillCard">
+          <div class="cad-corner tl"></div>
+          <div class="cad-corner br"></div>
+          <div class="featured-skill-top">
+            <div class="skill-icon-big"><i data-lucide="wrench"></i></div>
+            <div>
+              <div class="tag-row">
+                <span class="primary-badge font-mono">Primary Skill</span>
+                <span class="sub-badge font-mono">EXPERIENCED</span>
+              </div>
+              <h3 class="skill-name-big">AutoCAD</h3>
+            </div>
+          </div>
+          <p class="skill-desc-big" id="autocadDesc">
+            Kinh nghiệm sử dụng AutoCAD trong đọc hiểu, thiết kế và tối ưu bản vẽ kỹ thuật, đảm bảo độ chuẩn xác và tiêu chuẩn kỹ thuật cao.
+          </p>
+
+          <!-- Interactive CAD Blueprint Layer Inspector -->
+          <div class="cad-inspector-box">
+            <div class="cad-inspector-top">
+              <div class="cad-inspector-title font-mono">
+                <i data-lucide="layers"></i>
+                <span>BỘ MÔ PHỎNG & ĐỐI CHIẾU LAYER BẢN VẼ KỸ THUẬT</span>
+              </div>
+              <span class="cad-scale-tag font-mono">CAD-VIEWPORT // 1:50</span>
+            </div>
+            
+            <div class="cad-viewport-wrapper">
+              <canvas id="cadCanvas" width="760" height="260" class="cad-canvas"></canvas>
+            </div>
+
+            <div class="cad-controls-row font-mono">
+              <span class="cad-ctrl-label">LỚP LAYER:</span>
+              <button class="btn-cad-layer active" id="layerGeoBtn"><i data-lucide="check"></i> Kết cấu (Geo)</button>
+              <button class="btn-cad-layer active" id="layerDimBtn"><i data-lucide="check"></i> Kích thước (Dim)</button>
+              <button class="btn-cad-layer active" id="layerAxesBtn"><i data-lucide="check"></i> Trục tâm (Axes)</button>
+              <button class="btn-cad-layer active" id="layerGridBtn"><i data-lucide="check"></i> Lưới toạ độ (Grid)</button>
+            </div>
+          </div>
+
+          <div class="skill-previews" id="autocadScreenshotsRow">
+            <!-- Screenshots injected via script.js -->
+          </div>
+        </div>
+
+        <!-- 2-Col Grid: Work Tools Experience & TOEIC 600 -->
+        <div class="two-col-grid" id="otherSkillsGrid">
+          <!-- Injected via script.js -->
+        </div>
+
+        <div id="extraSkillsGrid" class="extra-skills-grid"></div>
+
+        <!-- Soft Skills Grid -->
+        <div class="glass-card soft-skills-container">
+          <div class="soft-skills-tag font-mono">TƯ DUY & KỸ NĂNG BỔ TRỢ</div>
+          <div class="soft-skills-grid" id="softSkillsGrid">
+            <!-- Injected via script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E. MY TOOLS SECTION -->
+    <section id="tools" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">04 // SELF-DEVELOPED WORK TOOLS</div>
+        <div class="section-title-flex">
+          <div>
+            <h2 class="section-title">Công Cụ Tự Phát Triển</h2>
+            <p class="section-subtitle">Các giải pháp tiện ích do tác giả độc lập thiết kế nhằm tự động hóa tác vụ, cải thiện độ chuẩn xác và nâng cao hiệu suất làm việc.</p>
+          </div>
+          <span class="count-badge font-mono" id="toolsCountBadge">TOTAL: 2 TOOLS</span>
+        </div>
+
+        <div class="tools-grid" id="toolsCardsGrid">
+          <!-- Dynamic Tools Cards Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- F. CERTIFICATES SECTION -->
+    <section id="certificates" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">05 // CREDENTIALS & CERTIFICATIONS</div>
+        <h2 class="section-title">Chứng Chỉ & Văn Bằng</h2>
+        <p class="section-subtitle">Các chứng chỉ chuẩn hóa chứng minh năng lực ngôn ngữ và trình độ kỹ thuật phục vụ công việc.</p>
+
+        <div class="certificates-grid" id="certificatesGrid">
+          <!-- Dynamic Certificate Cards Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- G. INTERESTS SECTION -->
+    <section id="interests" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">06 // LIFESTYLE & PERSONALITY</div>
+        <h2 class="section-title">Sở Thích & Đời Sống Cá Nhân</h2>
+        <p class="section-subtitle">Sự cân bằng giữa thể lực, cảm hứng âm nhạc và tinh thần tự học không ngừng là động lực giúp tôi bền bỉ phát triển.</p>
+
+        <div class="interests-grid" id="interestsGrid">
+          <!-- Dynamic Interests Cards Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- H. MY JOURNAL SECTION -->
+    <section id="journal" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">07 // JOURNAL & ARTICLES</div>
+        <div class="section-title-flex">
+          <div>
+            <h2 class="section-title">Nhật Ký & Chia Sẻ Kỹ Thuật</h2>
+            <p class="section-subtitle">Ghi chép về tư duy tối ưu hóa quy trình, bài học kinh nghiệm và kiến thức công nghệ thực tế.</p>
+          </div>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="glass-card journal-search-box">
+          <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="journalSearchInput" placeholder="Tìm kiếm bài viết theo từ khóa..." />
+          </div>
+          <div class="tags-filter-row" id="journalTagsRow">
+            <!-- Dynamic tags -->
+          </div>
+        </div>
+
+        <div class="posts-grid" id="postsGrid">
+          <!-- Dynamic Posts Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- I. GALLERY SECTION -->
+    <section id="gallery" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">08 // PHOTOGRAPHY & MEDIA</div>
+        <div class="section-title-flex">
+          <div>
+            <h2 class="section-title">Thư Viện Ảnh & Khoảnh Khắc</h2>
+            <p class="section-subtitle">Lưu giữ những góc làm việc kỹ thuật, bản vẽ CAD, kỷ niệm học tập và nhịp sống thường ngày.</p>
+          </div>
+          <span class="count-badge font-mono" id="galleryCountBadge">TOTAL: 6 ITEMS</span>
+        </div>
+
+        <div class="category-filters-row" id="galleryCategoriesRow">
+          <!-- Categories Filter Buttons -->
+        </div>
+
+        <div class="masonry-grid" id="galleryMasonryGrid">
+          <!-- Gallery Media Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- J. MEMORIES SECTION (PROTECTED ALBUMS) -->
+    <section id="memories" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">09 // PRIVATE MEMORIES & ALBUMS</div>
+        <div class="section-title-flex">
+          <div>
+            <h2 class="section-title">Album Kỷ Niệm & Bảo Mật</h2>
+            <p class="section-subtitle">Hệ thống lưu trữ kỷ niệm cá nhân với cơ chế phân quyền đa lớp: Công khai, Mật khẩu bảo vệ (không cần tài khoản) và Quản trị viên.</p>
+          </div>
+          <span class="count-badge font-mono" id="albumsCountBadge">3 ALBUMS</span>
+        </div>
+
+        <div class="albums-grid" id="albumsGrid">
+          <!-- Dynamic Album Cards Injected -->
+        </div>
+      </div>
+    </section>
+
+    <!-- K. CONTACT SECTION -->
+    <section id="contact" class="section-block">
+      <div class="section-container">
+        <div class="cad-header-line font-mono">10 // DIRECT CONNECTION & INQUIRIES</div>
+        <h2 class="section-title">Liên Hệ & Kết Nối Công Việc</h2>
+        <p class="section-subtitle">Tôi luôn sẵn sàng đón nhận những cơ hội hợp tác, trao đổi kỹ thuật hoặc các bài toán phát triển giải pháp thực tế.</p>
+
+        <div class="contact-grid">
+          <!-- Direct Info Column -->
+          <div class="glass-card contact-info-card">
+            <div class="cad-corner tl"></div>
+            <div class="contact-header">
+              <span class="font-mono contact-tag">THÔNG TIN TRỰC TIẾP</span>
+              <h3 class="contact-owner" id="contactOwnerName">Cao Đức Tiến Thành</h3>
+              <p class="contact-owner-sub">Bạn có thể gọi điện trực tiếp, gửi tin nhắn hoặc để lại lời nhắn qua biểu mẫu bên cạnh.</p>
+            </div>
+
+            <div class="contact-details-box">
+              <!-- Phone -->
+              <div class="detail-row">
+                <div class="row-top">
+                  <span class="font-mono row-tag">SỐ ĐIỆN THOẠI</span>
+                  <button id="copyPhoneBtn" class="btn-copy"><i data-lucide="copy"></i> <span>Sao chép</span></button>
+                </div>
+                <div class="row-main">
+                  <div class="icon-circle"><i data-lucide="phone"></i></div>
+                  <a href="tel:0972456724" class="phone-link" id="contactPhoneText">0972456724</a>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="detail-row">
+                <span class="font-mono row-tag">ĐỊA CHỈ KHU VỰC</span>
+                <div class="row-main">
+                  <div class="icon-circle"><i data-lucide="map-pin"></i></div>
+                  <span class="location-text" id="contactLocationText">Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</span>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="detail-row" id="contactEmailContainer">
+                <div class="row-top">
+                  <span class="font-mono row-tag">EMAIL LIÊN HỆ</span>
+                  <button id="copyEmailBtn" class="btn-copy"><i data-lucide="copy"></i> <span>Sao chép</span></button>
+                </div>
+                <div class="row-main">
+                  <div class="icon-circle"><i data-lucide="mail"></i></div>
+                  <a href="mailto:" class="email-link" id="contactEmailText">Cập nhật qua CMS Admin</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="glass-card contact-form-card">
+            <div class="form-header">
+              <div class="icon-circle"><i data-lucide="message-square"></i></div>
+              <div>
+                <h3>Gửi tin nhắn trực tuyến</h3>
+                <p>Biểu mẫu xác thực và lưu trữ tin nhắn an toàn</p>
+              </div>
+            </div>
+
+            <form id="publicContactForm" class="contact-form">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label font-mono">Họ và tên *</label>
+                  <input type="text" id="contactFormName" required placeholder="Nguyễn Văn A" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label font-mono">Email của bạn *</label>
+                  <input type="email" id="contactFormEmail" required placeholder="email@example.com" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label font-mono">Số điện thoại (tùy chọn)</label>
+                  <input type="tel" id="contactFormPhone" placeholder="09xx xxx xxx" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label font-mono">Chủ đề</label>
+                  <input type="text" id="contactFormSubject" placeholder="Trao đổi kỹ thuật, dự án..." />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label font-mono">Nội dung tin nhắn *</label>
+                <textarea id="contactFormMessage" required rows="4" placeholder="Viết nội dung tin nhắn hoặc câu hỏi của bạn tại đây..."></textarea>
+              </div>
+
+              <div id="contactFormStatus" class="form-status hidden"></div>
+
+              <button type="submit" id="contactSubmitBtn" class="btn btn-primary full-width">
+                <i data-lucide="send"></i> <span>Gửi lời nhắn ngay</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="section-container footer-container">
+        <div class="footer-grid">
+          <div class="footer-col-main">
+            <div class="brand-row">
+              <div class="logo-box">TT</div>
+              <span class="footer-brand">Cao Đức Tiến Thành</span>
+            </div>
+            <p class="footer-motto">
+              Engineering Mindset. Technical Skills. Continuous Growth.<br />
+              Hồ sơ năng lực cá nhân, các công cụ tự phát triển, chứng chỉ và nhật ký công nghệ.
+            </p>
+            <div class="footer-coords font-mono"><i data-lucide="terminal"></i> Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-heading font-mono">Học vấn & Chứng chỉ</h4>
+            <ul class="footer-links">
+              <li>• ĐH Bách khoa – ĐHQG TP.HCM</li>
+              <li>• THPT chuyên Nguyễn Hữu Huân</li>
+              <li>• Chứng chỉ TOEIC 600</li>
+              <li>• Kỹ năng AutoCAD & Tools</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-heading font-mono">Hệ thống & CMS</h4>
+            <ul class="footer-links">
+              <li><a href="javascript:void(0)" id="footerOpenCmsLink" class="cms-link"><i data-lucide="shield"></i> Cổng quản trị CMS</a></li>
+              <li><a href="#memories">• Album & Kỷ niệm bảo mật</a></li>
+              <li><a href="#tools">• Kho công cụ tự phát triển</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Cao Đức Tiến Thành. All rights reserved.</p>
+          <div class="footer-bottom-actions">
+            <span class="font-mono footer-tech-note">Designed with Blueprint Grid & Pastel Palette</span>
+            <button id="scrollToTopBtn" class="btn-top" title="Về đầu trang"><i data-lucide="arrow-up"></i></button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODALS & POPUPS                                          -->
+  <!-- ======================================================== -->
+
+  <!-- 1. Tool Detail Modal -->
+  <div id="toolDetailModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" data-close="toolDetailModal"><i data-lucide="x"></i></button>
+      <div class="modal-content" id="toolDetailContent">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Article Reader Modal -->
+  <div id="articleReaderModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" data-close="articleReaderModal"><i data-lucide="x"></i></button>
+      <div class="modal-content" id="articleReaderContent">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Album Contents Viewer Modal -->
+  <div id="albumViewerModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-xl">
+      <button class="modal-close-btn" data-close="albumViewerModal"><i data-lucide="x"></i></button>
+      <div class="modal-content" id="albumViewerContent">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Unlock Password Modal for Protected Albums -->
+  <div id="unlockAlbumModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-sm">
+      <button class="modal-close-btn" data-close="unlockAlbumModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="unlock-modal-header">
+          <div class="unlock-icon-circle"><i data-lucide="lock"></i></div>
+          <div>
+            <span class="font-mono modal-tag">BẢO MẬT RIÊNG TƯ</span>
+            <h3 class="modal-title" id="unlockModalTitle">Album được bảo vệ</h3>
+          </div>
+        </div>
+        <p class="unlock-desc">
+          Album này được bảo vệ bằng mật khẩu riêng độc lập. Bạn không cần tài khoản, chỉ cần nhập mật khẩu được cung cấp bởi chủ sở hữu.
+        </p>
+        <form id="unlockAlbumForm" class="unlock-form">
+          <div class="form-group">
+            <label class="form-label font-mono">MẬT KHẨU TRUY CẬP</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="albumPasswordInput" placeholder="Nhập mật khẩu (ví dụ demo: 123456)" required />
+              <button type="button" id="toggleAlbumPasswordVisibility" class="btn-eye"><i data-lucide="eye"></i></button>
+            </div>
+          </div>
+          <div id="unlockErrorAlert" class="error-alert hidden"></div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="unlockAlbumModal">Hủy</button>
+            <button type="submit" id="unlockSubmitBtn" class="btn btn-primary"><i data-lucide="shield-check"></i> Mở khóa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Fullscreen Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-backdrop hidden">
+    <button id="lightboxCloseBtn" class="lightbox-close"><i data-lucide="x"></i></button>
+    <button id="lightboxPrevBtn" class="lightbox-nav prev"><i data-lucide="chevron-left"></i></button>
+    <button id="lightboxNextBtn" class="lightbox-nav next"><i data-lucide="chevron-right"></i></button>
+    <div class="lightbox-body">
+      <img id="lightboxImg" src="" alt="Enlarged Preview" />
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- 6. Video Preview Modal -->
+  <div id="videoPreviewModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" data-close="videoPreviewModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <h3 id="videoModalTitle" style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 14px;">Xem Video</h3>
+        <div style="background: #000; border-radius: var(--radius-md); overflow: hidden; max-height: 70vh;">
+          <video id="videoPreviewPlayer" controls style="width: 100%; max-height: 65vh; display: block;"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Album Create / Edit Modal -->
+  <div id="albumEditModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" data-close="albumEditModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="folder-lock"></i></div>
+          <div>
+            <h3 id="albumModalHeading" style="font-size: 20px; font-weight: 900; color: var(--text-main);">Tạo Album Mới</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">Thiết lập thông tin, ảnh bìa và phân quyền truy cập độc lập</p>
+          </div>
+        </div>
+
+        <form id="albumEditForm" style="display: flex; flex-direction: column; gap: 16px; margin-top: 18px;">
+          <input type="hidden" id="albumEditId" value="" />
+          
+          <div class="form-group">
+            <label class="form-label font-mono">Tên album *</label>
+            <input type="text" id="albumFormTitle" required placeholder="VD: Dự án AutoCAD & Bản vẽ kỹ thuật" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label font-mono">Mô tả album</label>
+            <textarea id="albumFormDesc" rows="3" placeholder="Ghi chú tóm tắt về nội dung album kỷ niệm hoặc dự án..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label font-mono">Ảnh bìa album</label>
+              <div style="display: flex; gap: 10px; align-items: center;">
+              <input type="text" id="albumFormCover" placeholder="Dán URL ảnh, hoặc chọn ảnh từ máy" style="flex: 1;" />
+              <label class="btn btn-secondary btn-sm" style="cursor: pointer; white-space: nowrap;">
+                <i data-lucide="upload"></i> Chọn ảnh từ máy
+                <input type="file" id="albumCoverFileInput" accept=".jpg,.jpeg,.png,.webp,.gif,image/jpeg,image/png,image/webp,image/gif" style="display: none;" />
+              </label>
+            </div>
+            <img id="albumCoverPreview" alt="Xem trước ảnh bìa" class="cover-preview-img hidden" />
+          </div>
+
+          <!-- Chế độ truy cập album (Permission Selection) -->
+          <div class="form-group" style="background: var(--bg-color); padding: 16px; border-radius: var(--radius-sm); border: 1.5px solid var(--border-color);">
+            <label class="form-label font-mono" style="color: var(--deep-blue); display: flex; align-items: center; gap: 6px;">
+              <i data-lucide="shield"></i> CHẾ ĐỘ TRUY CẬP ALBUM *
+            </label>
+            
+            <div class="permission-select-wrapper">
+              <select id="albumFormVisibility" class="permission-dropdown">
+                <option value="PUBLIC">🌐 PUBLIC — Công khai (Mọi người đều có thể xem, không cần mật khẩu)</option>
+                <option value="PASSWORD_PROTECTED">🔒 PASSWORD_PROTECTED — Cần mật khẩu (Khách phải nhập mật khẩu riêng để xem)</option>
+                <option value="ADMIN_ONLY">🛡️ ADMIN_ONLY — Chỉ quản trị viên (Chỉ Admin đã đăng nhập mới có quyền truy cập)</option>
+              </select>
+            </div>
+
+            <div id="permissionExplanation" class="permission-explanation font-mono">
+              <!-- Explanation text dynamically updated -->
+            </div>
+
+            <!-- Password field (shown ONLY when PASSWORD_PROTECTED is selected) -->
+            <div id="albumPasswordGroup" class="password-group-box hidden" style="margin-top: 14px;">
+              <label class="form-label font-mono" style="color: #92400E;">
+                MẬT KHẨU CHO ALBUM NÀY *
+              </label>
+              <div class="password-input-wrapper">
+                <input type="password" id="albumFormPassword" placeholder="Nhập mật khẩu riêng cho album (ví dụ: 123456)" />
+                <button type="button" id="toggleAlbumFormPassBtn" class="btn-eye" title="Hiện/ẩn mật khẩu"><i data-lucide="eye"></i></button>
+              </div>
+              <p id="albumPasswordHint" class="text-xs text-muted" style="font-size: 11px; margin-top: 4px; color: #B45309;">
+                Mỗi album có một mật khẩu độc lập. Thay đổi mật khẩu sẽ tự động hủy các phiên truy cập cũ.
+              </p>
+            </div>
+          </div>
+
+          <div class="modal-actions" style="margin-top: 10px;">
+            <button type="button" class="btn btn-secondary" data-close="albumEditModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu thông tin Album</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Quick Permission Change Modal -->
+  <div id="albumPermissionModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-md">
+      <button class="modal-close-btn" data-close="albumPermissionModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="shield"></i></div>
+          <div>
+            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main);">Thay Đổi Quyền Truy Cập</h3>
+            <p id="permModalAlbumTitle" style="font-size: 12px; color: var(--accent-blue); font-weight: 700;"></p>
+          </div>
+        </div>
+
+        <form id="quickPermissionForm" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
+          <input type="hidden" id="quickPermAlbumId" value="" />
+          
+          <div class="form-group">
+            <label class="form-label font-mono">CHẾ ĐỘ TRUY CẬP ALBUM</label>
+            <select id="quickPermSelect" class="permission-dropdown">
+              <option value="PUBLIC">🌐 PUBLIC — Công khai (Không cần mật khẩu)</option>
+              <option value="PASSWORD_PROTECTED">🔒 PASSWORD_PROTECTED — Cần mật khẩu riêng</option>
+              <option value="ADMIN_ONLY">🛡️ ADMIN_ONLY — Chỉ quản trị viên</option>
+            </select>
+          </div>
+
+          <div id="quickPermPasswordBox" class="password-group-box hidden">
+            <label class="form-label font-mono" style="color: #92400E;">MẬT KHẨU TRUY CẬP *</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="quickPermPasswordInput" placeholder="Nhập mật khẩu cho album..." />
+              <button type="button" id="toggleQuickPermPassBtn" class="btn-eye"><i data-lucide="eye"></i></button>
+            </div>
+          </div>
+
+          <div class="modal-actions" style="margin-top: 6px;">
+            <button type="button" class="btn btn-secondary" data-close="albumPermissionModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="check"></i> Cập nhật quyền</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Select Media from Media Library Modal -->
+  <div id="albumMediaPickerModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-xl">
+      <button class="modal-close-btn" data-close="albumMediaPickerModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <div>
+            <h3 style="font-size: 20px; font-weight: 800; color: var(--text-main);">Chọn Tệp Từ Thư Viện Media</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">Đánh dấu chọn các tệp media muốn thêm vào album hiện tại</p>
+          </div>
+          <button id="confirmAddMediaToAlbumBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm đã chọn vào Album</button>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <input type="text" id="pickerSearchInput" placeholder="Tìm kiếm tệp theo tên..." style="width: 100%; padding: 8px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 12px;" />
+        </div>
+
+        <div id="pickerMediaGrid" class="picker-media-grid">
+          <!-- Injected via script.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Custom Confirmation Dialog (Replaces native confirm) -->
+  <div id="customConfirmModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-sm" style="text-align: center;">
+      <div style="width: 52px; height: 52px; border-radius: 50%; background: #FEE2E2; color: #DC2626; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+        <i data-lucide="alert-triangle" style="width: 26px; height: 26px;"></i>
+      </div>
+      <h3 id="confirmModalTitle" style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Xác nhận thao tác</h3>
+      <p id="confirmModalMessage" style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;"></p>
+      <div class="modal-actions" style="justify-content: center;">
+        <button id="confirmCancelBtn" class="btn btn-secondary">Hủy bỏ</button>
+        <button id="confirmOkBtn" class="btn btn-primary" style="background: #DC2626;">Đồng ý xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- ADMIN CMS DASHBOARD FULL VIEW MODAL                      -->
+  <!-- ======================================================== -->
+  <div id="adminCmsModal" class="cms-overlay-container hidden">
+    <!-- CMS Topbar -->
+    <div class="cms-topbar">
+      <div class="cms-brand">
+        <div class="logo-box">TT</div>
+        <div>
+          <span class="cms-title">HỆ THỐNG QUẢN TRỊ CMS</span>
+          <span class="cms-sub font-mono">CAO ĐỨC TIẾN THÀNH</span>
+        </div>
+      </div>
+      <div class="cms-top-actions">
+        <span class="cms-user-badge font-mono" id="cmsUserEmail">admin@caoductienthanh.com</span>
+        <button id="cmsLogoutBtn" class="btn-cms-logout"><i data-lucide="log-out"></i> Đăng xuất</button>
+        <button id="closeCmsBtn" class="btn-cms-close" title="Đóng CMS về Website"><i data-lucide="x"></i></button>
+      </div>
+    </div>
+
+    <!-- CMS Inner Area: Login or Dashboard -->
+    <div class="cms-body-wrapper">
+      
+      <!-- CMS LOGIN VIEW -->
+      <div id="cmsLoginView" class="cms-login-box glass-card">
+        <div class="login-header">
+          <div class="logo-box-big"><i data-lucide="shield"></i></div>
+          <h2>Đăng Nhập Quản Trị Viên</h2>
+          <p>Quản lý toàn bộ thông tin cá nhân, công cụ, chứng chỉ và album bảo mật</p>
+        </div>
+
+        <div class="demo-login-hint font-mono">
+          <div class="hint-top">
+            <strong>Tài khoản mặc định:</strong>
+            <button type="button" id="fillDemoLoginBtn" class="btn-fill-demo">Nhấn để điền nhanh</button>
+          </div>
+          <code>Email: admin@caoductienthanh.com</code><br/>
+          <code>Pass:  admin123456</code>
+        </div>
+
+        <form id="cmsLoginForm" class="cms-login-form">
+          <div class="form-group">
+            <label class="form-label font-mono">EMAIL QUẢN TRỊ</label>
+            <input type="email" id="cmsEmailInput" required placeholder="admin@caoductienthanh.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">MẬT KHẨU</label>
+            <input type="password" id="cmsPasswordInput" required placeholder="••••••••" />
+          </div>
+          <div id="cmsLoginError" class="error-alert hidden"></div>
+          <button type="submit" id="cmsLoginSubmitBtn" class="btn btn-primary full-width">
+            <i data-lucide="key-round"></i> Đăng nhập vào CMS
+          </button>
+        </form>
+      </div>
+
+      <!-- CMS DASHBOARD VIEW -->
+      <div id="cmsDashboardView" class="cms-dashboard-container hidden">
+        <!-- Sidebar Tabs inside CMS -->
+        <aside class="cms-sidebar">
+          <div class="cms-menu-heading font-mono">QUẢN LÝ NỘI DUNG</div>
+          <div class="cms-tabs-list">
+            <button class="cms-tab-btn active" data-tab="tab-overview"><i data-lucide="layout-dashboard"></i> Tổng quan</button>
+            <button class="cms-tab-btn" data-tab="tab-profile"><i data-lucide="user-check"></i> Hồ sơ cá nhân</button>
+            <button class="cms-tab-btn" data-tab="tab-education"><i data-lucide="graduation-cap"></i> Học vấn</button>
+            <button class="cms-tab-btn" data-tab="tab-skills"><i data-lucide="wrench"></i> Kỹ năng & CAD</button>
+            <button class="cms-tab-btn" data-tab="tab-tools"><i data-lucide="cpu"></i> Công cụ tự làm</button>
+            <button class="cms-tab-btn" data-tab="tab-certificates"><i data-lucide="award"></i> Chứng chỉ (TOEIC)</button>
+            <button class="cms-tab-btn" data-tab="tab-interests"><i data-lucide="heart"></i> Sở thích</button>
+            <button class="cms-tab-btn" data-tab="tab-posts"><i data-lucide="file-text"></i> Bài viết (Journal)</button>
+            <button class="cms-tab-btn" data-tab="tab-media"><i data-lucide="image"></i> Thư viện Media</button>
+            <button class="cms-tab-btn" data-tab="tab-albums"><i data-lucide="folder-lock"></i> Album bảo mật</button>
+            <button class="cms-tab-btn" data-tab="tab-settings"><i data-lucide="settings"></i> Tin nhắn & Cài đặt</button>
+          </div>
+        </aside>
+
+        <!-- Tab Content Area -->
+        <div class="cms-tab-content-area">
+          
+          <!-- TAB 1: OVERVIEW -->
+          <div id="tab-overview" class="cms-tab-pane active">
+            <div class="cms-pane-header">
+              <h2>Tổng quan hệ thống</h2>
+              <p>Thống kê số lượng nội dung và trạng thái thời gian thực</p>
+            </div>
+            <div class="stats-cards-grid" id="cmsStatsGrid">
+              <!-- Live stats cards injected -->
+            </div>
+            <div class="activity-logs-card glass-card">
+              <h3><i data-lucide="activity"></i> Nhật ký hoạt động gần đây</h3>
+              <div id="cmsActivityLogsList" class="logs-list">
+                <!-- Injected via script.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: PROFILE -->
+          <div id="tab-profile" class="cms-tab-pane">
+            <div class="cms-pane-header">
+              <h2>Chỉnh sửa hồ sơ cá nhân</h2>
+              <p>Cập nhật họ tên, tiểu sử, tiêu đề, số điện thoại và thông tin hiển thị</p>
+            </div>
+            <form id="cmsProfileForm" class="glass-card cms-form">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label font-mono">Họ và tên *</label>
+                  <input type="text" id="adminProfileName" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label font-mono">Ngày sinh (YYYY-MM-DD)</label>
+                  <input type="text" id="adminProfileDob" />
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label font-mono">Số điện thoại</label>
+                  <input type="text" id="adminProfilePhone" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label font-mono">Địa chỉ / Khu vực</label>
+                  <input type="text" id="adminProfileLocation" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label font-mono">Headline nghề nghiệp</label>
+                <input type="text" id="adminProfileHeadline" />
+              </div>
+              <div class="form-group">
+                <label class="form-label font-mono">Tiểu sử & Giới thiệu chi tiết</label>
+                <textarea id="adminProfileBio" rows="4"></textarea>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label font-mono">Portrait URL</label>
+                  <input type="text" id="adminProfilePortrait" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label font-mono">Email liên hệ (tùy chọn)</label>
+                  <input type="email" id="adminProfileEmail" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu thông tin hồ sơ</button>
+            </form>
+          </div>
+
+          <!-- TAB 3: EDUCATION -->
+          <div id="tab-education" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Học vấn & Đào tạo</h2>
+                <p>THPT chuyên Nguyễn Hữu Huân & ĐH Bách khoa ĐHQG TP.HCM</p>
+              </div>
+              <button id="adminAddEducationBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm học vấn</button>
+            </div>
+            <div id="adminEducationList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 4: SKILLS -->
+          <div id="tab-skills" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Kỹ năng & AutoCAD</h2>
+                <p>AutoCAD, công cụ tự tạo, chứng chỉ TOEIC 600 và kỹ năng mềm</p>
+              </div>
+              <button id="adminAddSkillBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm kỹ năng</button>
+            </div>
+            <div id="adminSkillsList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 5: TOOLS -->
+          <div id="tab-tools" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Công cụ tự phát triển</h2>
+                <p>Trưng bày các tiện ích độc lập do tác giả xây dựng</p>
+              </div>
+              <button id="adminAddToolBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm công cụ</button>
+            </div>
+            <div id="adminToolsList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 6: CERTIFICATES -->
+          <div id="tab-certificates" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Chứng chỉ</h2>
+                <p>Chứng chỉ TOEIC 600 từ ETS và các văn bằng chuyên môn</p>
+              </div>
+              <button id="adminAddCertBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm chứng chỉ</button>
+            </div>
+            <div id="adminCertificatesList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 7: INTERESTS -->
+          <div id="tab-interests" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Sở thích & Đời sống</h2>
+                <p>Thể thao, âm nhạc, học tập liên tục và khám phá công nghệ</p>
+              </div>
+              <button id="adminAddInterestBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Thêm sở thích</button>
+            </div>
+            <div id="adminInterestsList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 8: POSTS -->
+          <div id="tab-posts" class="cms-tab-pane">
+            <div class="cms-pane-header-flex">
+              <div>
+                <h2>Quản lý Bài viết & Nhật ký</h2>
+                <p>Soạn thảo, xuất bản và phân loại bài viết kỹ thuật</p>
+              </div>
+              <button id="adminAddPostBtn" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Viết bài mới</button>
+            </div>
+            <div id="adminPostsList" class="cms-items-list"></div>
+          </div>
+
+          <!-- TAB 9: MEDIA LIBRARY (UPGRADED) -->
+          <div id="tab-media" class="cms-tab-pane">
+            <div class="cms-pane-header">
+              <h2>Thư viện Media & Tệp tin</h2>
+              <p>Quản lý hình ảnh, video và tài liệu. Admin có thể tải tệp trực tiếp từ máy tính lên website mà không cần nhập URL.</p>
+            </div>
+
+            <!-- Prominent Drag & Drop File Upload Area -->
+            <div class="upload-dropzone-box" id="mediaDropZone">
+              <input type="file" id="mediaFileInput" multiple accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,.mov,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip" style="display: none;" />
+              <div class="dropzone-content">
+                <div class="upload-icon-circle"><i data-lucide="cloud-upload"></i></div>
+                <h3 style="font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">
+                  Kéo thả tệp vào đây hoặc <span class="upload-link-text" id="browseMediaFilesBtn">Chọn từ máy tính</span>
+                </h3>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+                  Hỗ trợ tải nhiều tệp cùng lúc: Hình ảnh (JPG, PNG, GIF, WEBP), Video (MP4, WEBM, MOV), Tài liệu (PDF, DOCX, XLSX, TXT, ZIP)
+                </p>
+                <div class="upload-type-tags font-mono">
+                  <span>ẢNH: JPG, PNG, WEBP, GIF</span>
+                  <span>VIDEO: MP4, WEBM, MOV</span>
+                  <span>TÀI LIỆU: PDF, DOC, XLS, ZIP</span>
+                </div>
+              </div>
+
+              <!-- Upload Progress Indicator Bar -->
+              <div id="uploadProgressContainer" class="upload-progress-container hidden">
+                <div class="progress-bar-wrapper">
+                  <div id="uploadProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div class="upload-progress-head">
+                  <div class="progress-status-text font-mono" id="uploadProgressStatusText">Đang xử lý tệp...</div>
+                  <button type="button" id="cancelUploadBtn" class="btn btn-secondary btn-sm">Hủy tải lên</button>
+                </div>
+                <div id="uploadFileList" class="upload-file-list"></div>
+              </div>
+            </div>
+
+            <!-- Media Filter, Search & Batch Actions Toolbar -->
+            <div class="media-toolbar-box glass-card">
+              <div class="media-toolbar-row">
+                <div class="search-input-wrapper" style="flex: 1; max-width: 320px;">
+                  <i data-lucide="search" class="search-icon"></i>
+                  <input type="text" id="mediaSearchInput" placeholder="Tìm kiếm theo tên tệp..." />
+                </div>
+
+                <div class="media-type-filters">
+                  <button class="btn-filter-pill active" data-type="all">Tất cả</button>
+                  <button class="btn-filter-pill" data-type="image"><i data-lucide="image"></i> Hình ảnh</button>
+                  <button class="btn-filter-pill" data-type="video"><i data-lucide="video"></i> Video</button>
+                  <button class="btn-filter-pill" data-type="document"><i data-lucide="file-text"></i> Tài liệu</button>
+                </div>
+
+                <div class="media-sort-wrapper">
+                  <select id="mediaSortSelect" class="sort-dropdown font-mono">
+                    <option value="newest">Mới nhất trước</option>
+                    <option value="oldest">Cũ nhất trước</option>
+                    <option value="name">Tên A-Z</option>
+                    <option value="size">Kích thước</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Bulk Actions Bar (appears when items are selected) -->
+              <div id="mediaBulkBar" class="media-bulk-bar hidden">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; cursor: pointer;">
+                  <input type="checkbox" id="selectAllMediaCheck" /> Chọn tất cả
+                </label>
+                <span id="selectedMediaCountBadge" class="selected-count-tag font-mono">Đã chọn 0 tệp</span>
+                <div style="display: flex; gap: 8px; margin-left: auto;">
+                  <button id="downloadSelectedMediaBtn" class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Tải xuống đã chọn (ZIP)</button>
+                  <button id="deleteSelectedMediaBtn" class="btn btn-secondary btn-sm" style="color: #DC2626;"><i data-lucide="trash-2"></i> Xóa đã chọn</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Media Grid -->
+            <div id="adminMediaList" class="upgraded-media-grid">
+              <!-- Dynamically injected via script.js -->
+            </div>
+            <div id="mediaPagination" class="media-pagination"></div>
+          </div>
+
+          <!-- TAB 10: ALBUM MANAGEMENT & DETAIL (UPGRADED) -->
+          <div id="tab-albums" class="cms-tab-pane">
+            
+            <!-- SUB-VIEW 1: ALBUMS LIST -->
+            <div id="albumsListView">
+              <div class="cms-pane-header-flex">
+                <div>
+                  <h2>Quản lý Album Kỷ Niệm & Dự Án</h2>
+                  <p>Mỗi album có phân quyền độc lập (Public, Password Protected, Admin Only). Nhấp vào album để quản lý ảnh/video bên trong.</p>
+                </div>
+                <button id="adminAddAlbumBtn" class="btn btn-primary"><i data-lucide="plus"></i> Tạo Album mới</button>
+              </div>
+
+              <div id="adminAlbumsList" class="upgraded-albums-grid">
+                <!-- Dynamically injected via script.js -->
+              </div>
+            </div>
+
+            <!-- SUB-VIEW 2: DEDICATED ALBUM DETAIL MANAGEMENT -->
+            <div id="albumDetailView" class="album-detail-view hidden">
+              <!-- Top navigation & back button -->
+              <div class="album-detail-nav">
+                <button id="backToAlbumsListBtn" class="btn btn-secondary btn-sm">
+                  <i data-lucide="arrow-left"></i> Quay lại danh sách album
+                </button>
+                <div style="display: flex; gap: 8px;">
+                  <button id="albumDetailEditInfoBtn" class="btn btn-secondary btn-sm"><i data-lucide="edit-2"></i> Sửa thông tin</button>
+                  <button id="albumDetailChangePermBtn" class="btn btn-secondary btn-sm"><i data-lucide="shield"></i> Đổi quyền</button>
+                </div>
+              </div>
+
+              <!-- Album Header Banner -->
+              <div class="album-detail-header-card glass-card">
+                <div class="album-header-cover" id="albumDetailCoverBox">
+                  <img id="albumDetailCoverImg" src="" alt="Album Cover" />
+                </div>
+                <div class="album-header-info">
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                    <span id="albumDetailPermBadge" class="album-vis-badge font-mono"></span>
+                    <span class="font-mono text-muted" style="font-size: 11px;" id="albumDetailUpdatedDate"></span>
+                  </div>
+                  <h2 id="albumDetailTitle" style="font-size: 24px; font-weight: 900; color: var(--text-main);"></h2>
+                  <p id="albumDetailDesc" style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 6px;"></p>
+                  
+                  <div class="album-header-metrics font-mono">
+                    <span class="metric-pill"><i data-lucide="image"></i> <strong id="albumDetailPhotoCount">0</strong> ảnh</span>
+                    <span class="metric-pill"><i data-lucide="video"></i> <strong id="albumDetailVideoCount">0</strong> video</span>
+                    <span class="metric-pill"><i data-lucide="file"></i> <strong id="albumDetailTotalCount">0</strong> tổng tệp</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Media Actions Toolbar for this album -->
+              <div class="album-media-toolbar glass-card">
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                  <button id="albumDetailUploadBtn" class="btn btn-primary btn-sm"><i data-lucide="upload"></i> Tải tệp lên Album</button>
+                  <input type="file" id="albumDetailFileInput" multiple accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,.mov,.pdf,.docx,.xlsx,.zip" style="display: none;" />
+                  <button id="albumDetailPickMediaBtn" class="btn btn-secondary btn-sm"><i data-lucide="folder-plus"></i> Chọn từ Thư viện Media</button>
+                  <button id="albumDetailDownloadAllBtn" class="btn btn-secondary btn-sm"><i data-lucide="archive"></i> Tải toàn bộ Album (ZIP)</button>
+                </div>
+
+                <!-- Batch actions inside album -->
+                <div id="albumDetailBatchBar" class="album-batch-bar hidden">
+                  <label style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; cursor: pointer;">
+                    <input type="checkbox" id="selectAllAlbumMediaCheck" /> Chọn tất cả
+                  </label>
+                  <span id="albumSelectedCountBadge" class="selected-count-tag font-mono">Đã chọn 0 tệp</span>
+                  <div style="display: flex; gap: 8px; margin-left: auto;">
+                    <button id="albumDownloadSelectedBtn" class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Tải xuống đã chọn (ZIP)</button>
+                    <button id="albumRemoveSelectedBtn" class="btn btn-secondary btn-sm" style="color: #DC2626;"><i data-lucide="minus-circle"></i> Gỡ khỏi album</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Drag and drop zone inside album -->
+              <div class="album-dropzone" id="albumDetailDropzone">
+                <i data-lucide="cloud-upload" style="width: 20px; height: 20px; color: var(--accent-blue);"></i>
+                <span>Kéo thả ảnh hoặc video vào đây để thêm trực tiếp vào album</span>
+              </div>
+
+              <!-- Album Media Grid -->
+              <div id="albumDetailMediaGrid" class="album-media-grid">
+                <!-- Dynamically injected via script.js -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB 11: SETTINGS & MESSAGES -->
+          <div id="tab-settings" class="cms-tab-pane">
+            <div class="cms-pane-header">
+              <h2>Hòm thư liên hệ & Trạng thái hệ thống</h2>
+              <p>Xem toàn bộ tin nhắn từ khách truy cập và kiểm tra cấu hình Supabase</p>
+            </div>
+            
+            <div class="glass-card cms-subcard">
+              <h3><i data-lucide="mail"></i> Tin nhắn liên hệ gửi đến</h3>
+              <div id="adminMessagesList" class="messages-list"></div>
+            </div>
+
+            <div class="glass-card cms-subcard mt-4">
+              <h3><i data-lucide="database"></i> Trạng thái Supabase Cloud</h3>
+              <div class="supabase-status-pill font-mono">
+                <span class="status-indicator"></span>
+                <span>LOCAL PERSISTENCE / SUPABASE FALLBACK READY</span>
+              </div>
+              <p class="text-xs text-muted mt-2">
+                Hệ thống tự động đồng bộ hóa trên LocalStorage và sẵn sàng chuyển sang Supabase Cloud khi cấu hình <code>VITE_SUPABASE_URL</code> trong file <code>.env</code>.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Edit media caption -->
+  <div id="mediaCaptionModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-sm">
+      <button class="modal-close-btn" data-close="mediaCaptionModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Chú thích tệp</h3>
+        <p id="captionFileName" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;"></p>
+        <form id="mediaCaptionForm" style="display: flex; flex-direction: column; gap: 12px;">
+          <input type="hidden" id="captionMediaId" value="" />
+          <input type="text" id="captionInput" placeholder="Nhập chú thích hiển thị cùng tệp" />
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="mediaCaptionModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu chú thích</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. PDF preview -->
+  <div id="pdfPreviewModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-xl">
+      <button class="modal-close-btn" data-close="pdfPreviewModal"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <h3 id="pdfPreviewTitle" style="font-size: 16px; font-weight: 800; color: var(--text-main);">Xem PDF</h3>
+          <button type="button" id="pdfPreviewDownloadBtn" class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Tải xuống</button>
+        </div>
+        <iframe id="pdfPreviewFrame" class="pdf-frame" title="Xem trước PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Add / edit skill -->
+  <div id="skillFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="skillFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="wrench"></i></div>
+          <div>
+            <h3 id="skillFormHeading" style="font-size: 20px; font-weight: 900; color: var(--text-main);">Thêm kỹ năng</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">Điền tên, chọn phân loại và biểu tượng. Kỹ năng sẽ hiện trên hồ sơ ngay sau khi lưu.</p>
+          </div>
+        </div>
+
+        <form id="skillForm" class="skill-form">
+          <input type="hidden" id="skillFormId" value="" />
+
+          <div class="form-group">
+            <label class="form-label font-mono" for="skillFormName">Tên kỹ năng *</label>
+            <input type="text" id="skillFormName" required placeholder="VD: AutoCAD, Python, TOEIC..." />
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Phân loại *</label>
+              <div id="skillCategoryList" class="skill-scroll-list" role="listbox" aria-label="Phân loại kỹ năng"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono" for="skillFormLevel">Mức độ</label>
+              <select id="skillFormLevel" class="permission-dropdown">
+                <option value="basic">Làm quen</option>
+                <option value="proficient" selected>Thành thạo</option>
+                <option value="advanced">Chuyên sâu</option>
+              </select>
+              <p id="skillCategoryHint" class="skill-field-hint">Chọn một nhóm. Danh sách có thể cuộn nếu nhiều mục.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label font-mono">Biểu tượng kỹ năng</label>
+            <div id="skillIconPicker" class="skill-icon-picker" role="listbox" aria-label="Biểu tượng kỹ năng"></div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono" for="skillFormBadge">Huy hiệu ngắn</label>
+              <input type="text" id="skillFormBadge" placeholder="VD: Primary Skill, Score 600" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono" for="skillFormDescription">Mô tả</label>
+              <textarea id="skillFormDescription" rows="3" placeholder="Kỹ năng này dùng để làm gì, ở mức nào..."></textarea>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="skillFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu kỹ năng</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Education form -->
+  <div id="educationFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="educationFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="graduation-cap"></i></div>
+          <div>
+            <h3 id="educationFormHeading">Thêm học vấn</h3>
+            <p>Nhập trường học, cấp học và thời gian đào tạo. Thông tin sẽ hiện ngay trên hồ sơ.</p>
+          </div>
+        </div>
+        <form id="educationForm" class="skill-form">
+          <input type="hidden" id="educationFormId" value="" />
+          <div class="form-group">
+            <label class="form-label font-mono">Tên trường học / Cơ sở đào tạo *</label>
+            <input type="text" id="educationInstitution" required placeholder="VD: Trường Đại học Bách khoa – ĐHQG TP.HCM" />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Chuyên ngành / Hệ đào tạo</label>
+              <input type="text" id="educationMajor" placeholder="VD: Kỹ thuật Cơ khí, Công nghệ thông tin" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Cấp học / Bằng cấp</label>
+              <select id="educationLevel" class="permission-dropdown">
+                <option value="university">Đại học</option>
+                <option value="high_school">THPT Chuyên</option>
+                <option value="college">Cao đẳng</option>
+                <option value="postgraduate">Sau đại học</option>
+                <option value="certificate">Chứng chỉ chuyên môn</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Thời gian bắt đầu</label>
+              <input type="month" id="educationStartDate" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Thời gian kết thúc</label>
+              <input type="month" id="educationEndDate" />
+            </div>
+          </div>
+          <label class="cms-toggle-row">
+            <input type="checkbox" id="educationCurrentlyStudying" />
+            <span>Đang học tại đây</span>
+          </label>
+          <div class="form-group">
+            <label class="form-label font-mono">Trạng thái tốt nghiệp</label>
+            <select id="educationStatus" class="permission-dropdown">
+              <option value="graduated">Đã tốt nghiệp</option>
+              <option value="studying">Đang theo học</option>
+              <option value="completed">Hoàn thành</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Thành tựu / Mô tả chi tiết</label>
+            <textarea id="educationDescription" rows="4" placeholder="GPA, giải thưởng, dự án tốt nghiệp..."></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="educationFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu học vấn</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. Tool form -->
+  <div id="toolFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="toolFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="cpu"></i></div>
+          <div>
+            <h3 id="toolFormHeading">Thêm công cụ</h3>
+            <p>Mô tả công cụ tự làm, nhóm và trạng thái hiển thị trên website.</p>
+          </div>
+        </div>
+        <form id="toolForm" class="skill-form">
+          <input type="hidden" id="toolFormId" value="" />
+          <div class="form-group">
+            <label class="form-label font-mono">Tên công cụ *</label>
+            <input type="text" id="toolName" required placeholder="VD: CAD Drawing Automation" />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Phân loại / Nhóm công cụ</label>
+              <select id="toolCategory" class="permission-dropdown">
+                <option value="CAD Utility">CAD Utility</option>
+                <option value="Workflow Automation">Workflow Automation</option>
+                <option value="Web App">Web App</option>
+                <option value="Script">Script</option>
+                <option value="Engineering Utility">Engineering Utility</option>
+              </select>
+            </div>
+            <label class="cms-toggle-row" style="align-self:end;">
+              <input type="checkbox" id="toolPublished" checked />
+              <span>Hiển thị trên website</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Icon đại diện</label>
+            <div id="toolIconPicker" class="skill-icon-picker"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Mô tả chi tiết</label>
+            <textarea id="toolDescription" rows="3" placeholder="Công cụ này giải quyết bài toán nào..."></textarea>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Mục đích</label>
+              <textarea id="toolPurpose" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Bài toán giải quyết</label>
+              <textarea id="toolProblem" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Công nghệ sử dụng</label>
+            <input type="text" id="toolTechnologies" placeholder="AutoCAD Scripting, Python, Automation" />
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Ảnh đại diện</label>
+            <div class="cover-upload-row">
+              <input type="text" id="toolThumbUrl" placeholder="Dán URL ảnh" />
+              <label class="btn btn-secondary btn-sm">Chọn ảnh<input type="file" id="toolThumbFile" accept="image/*" hidden /></label>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="toolFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu công cụ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. Certificate form -->
+  <div id="certificateFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="certificateFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="award"></i></div>
+          <div>
+            <h3 id="certificateFormHeading">Thêm chứng chỉ</h3>
+            <p>Lưu TOEIC và các chứng chỉ khác, kèm điểm số và tổ chức cấp.</p>
+          </div>
+        </div>
+        <form id="certificateForm" class="skill-form">
+          <input type="hidden" id="certificateFormId" value="" />
+          <div class="form-group">
+            <label class="form-label font-mono">Tên chứng chỉ *</label>
+            <input type="text" id="certificateTitle" required placeholder="VD: TOEIC Listening & Reading" />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Tổ chức cấp</label>
+              <input type="text" id="certificateOrg" placeholder="VD: ETS, Microsoft" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Điểm số / Mức xếp loại</label>
+              <input type="text" id="certificateScore" placeholder="VD: 600, Pass, Gold" />
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Ngày cấp</label>
+              <input type="date" id="certificateIssueDate" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Ngày hết hạn</label>
+              <input type="date" id="certificateExpiryDate" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Icon / Huy hiệu</label>
+            <div id="certificateIconPicker" class="skill-icon-picker"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Mô tả</label>
+            <textarea id="certificateDescription" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Ảnh chứng chỉ (URL)</label>
+            <input type="text" id="certificateImageUrl" placeholder="https://..." />
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="certificateFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu chứng chỉ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. Interest form -->
+  <div id="interestFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="interestFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="heart"></i></div>
+          <div>
+            <h3 id="interestFormHeading">Thêm sở thích</h3>
+            <p>Chọn lĩnh vực, biểu tượng và mô tả ngắn cho phần đời sống.</p>
+          </div>
+        </div>
+        <form id="interestForm" class="skill-form">
+          <input type="hidden" id="interestFormId" value="" />
+          <div class="form-group">
+            <label class="form-label font-mono">Tên sở thích / Lĩnh vực *</label>
+            <input type="text" id="interestTitle" required placeholder="VD: Sports & Physical Activity" />
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Phân loại</label>
+            <select id="interestCategory" class="permission-dropdown">
+              <option value="sports">Thể thao</option>
+              <option value="music">Âm nhạc</option>
+              <option value="learning">Học tập & Công nghệ</option>
+              <option value="lifestyle">Đời sống</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Icon biểu tượng</label>
+            <div id="interestIconPicker" class="skill-icon-picker"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Mô tả ngắn</label>
+            <textarea id="interestDescription" rows="3"></textarea>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Ảnh minh họa (URL)</label>
+              <input type="text" id="interestImageUrl" placeholder="https://..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Thẻ</label>
+              <input type="text" id="interestTags" placeholder="Thể thao, Kỷ luật" />
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="interestFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu sở thích</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. Post / Journal form -->
+  <div id="postFormModal" class="modal-backdrop hidden">
+    <div class="modal-card modal-lg skill-form-card">
+      <button class="modal-close-btn" data-close="postFormModal" type="button"><i data-lucide="x"></i></button>
+      <div class="modal-content">
+        <div class="modal-header-simple">
+          <div class="icon-circle"><i data-lucide="file-text"></i></div>
+          <div>
+            <h3 id="postFormHeading">Thêm bài viết</h3>
+            <p>Soạn tiêu đề, tóm tắt, nội dung Markdown và trạng thái xuất bản.</p>
+          </div>
+        </div>
+        <form id="postForm" class="skill-form">
+          <input type="hidden" id="postFormId" value="" />
+          <div class="form-group">
+            <label class="form-label font-mono">Tiêu đề bài viết *</label>
+            <input type="text" id="postTitle" required placeholder="VD: Tư duy tối ưu hóa quy trình kỹ thuật" />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Slug / Đường dẫn tĩnh</label>
+              <input type="text" id="postSlug" placeholder="tu-duy-toi-uu-hoa" />
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Danh mục bài viết</label>
+              <select id="postCategory" class="permission-dropdown">
+                <option>Kỹ thuật & Workflow</option>
+                <option>Tiếng Anh & Skills</option>
+                <option>Chia sẻ kinh nghiệm</option>
+                <option>Công cụ & Tự động hóa</option>
+                <option>Học tập liên tục</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label font-mono">Trạng thái xuất bản</label>
+              <select id="postStatus" class="permission-dropdown">
+                <option value="published">Đã xuất bản</option>
+                <option value="draft">Nháp</option>
+                <option value="archived">Lưu trữ</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label font-mono">Ngày xuất bản</label>
+              <input type="date" id="postPublishedAt" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Ảnh đại diện / Banner</label>
+            <div class="cover-upload-row">
+              <input type="text" id="postCoverUrl" placeholder="Dán URL ảnh hoặc tải từ máy" />
+              <label class="btn btn-secondary btn-sm">Tải ảnh<input type="file" id="postCoverFile" accept="image/*" hidden /></label>
+            </div>
+            <img id="postCoverPreview" alt="Xem trước banner" class="cover-preview-img hidden" />
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Tóm tắt ngắn *</label>
+            <textarea id="postExcerpt" rows="3" placeholder="Khoảng 100-200 từ, hiện trên danh sách Journal"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Nội dung chi tiết (Markdown)</label>
+            <textarea id="postContent" rows="8" class="markdown-editor" placeholder="Viết nội dung. Hỗ trợ Markdown: ## tiêu đề, **đậm**, - danh sách"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label font-mono">Thẻ / Tags</label>
+            <input type="text" id="postTags" placeholder="AutoCAD, Tự động hóa, Năng suất" />
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" data-close="postFormModal">Hủy</button>
+            <button type="submit" class="btn btn-primary"><i data-lucide="save"></i> Lưu bài viết</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+  <script src="cms-media-bindings.js"></script>
+  <script src="cms-record-modals.js"></script>
+</body>
+</html>
